@@ -52,7 +52,7 @@ contract Marketplace is ReentrancyGuard {
     function makeItem(IERC721 _nft, uint _tokenId, uint _price) external nonReentrant {
         require(_price > 0, "Price must be greater than zero");
         _nft.transferFrom(msg.sender, address(this), _tokenId);
-        items[itemsCount] = Item (
+        items[itemCount] = Item (
             itemCount,
             _nft,
             _tokenId,
@@ -91,12 +91,12 @@ contract Marketplace is ReentrancyGuard {
             item.tokenId,
             item.price,
             item.seller,
-            msg.sender,
+            msg.sender
         );
     }
     
     function getTotalPrice(uint _itemId) view public returns(uint) {
-       return items[_itemId].price = (100 * feePercent / 100);
+       return (items[_itemId].price*(100 + feePercent) / 100);
     }
 
 }
