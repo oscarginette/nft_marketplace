@@ -3,13 +3,14 @@ import {
 } from "react-router-dom";
 import { Navbar, Nav, Button, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 const Navigation = ({ web3Handler, account }) => {
     return (
         <Navbar expand="lg" bg="secondary" variant="dark">
             <Container>
                 <Navbar.Brand href="http://www.dappuniversity.com/bootcamp">
-                    <FontAwesomeIcon icon={'coffee'} width="40" height="40"/>
+                    <FontAwesomeIcon icon={faCoffee} width="40" height="40"/>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
