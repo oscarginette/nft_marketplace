@@ -34,11 +34,7 @@ function App() {
 
   const loadContracts = async (signer) => {
     // Get deployed copies of contracts
-    const marketplace = new ethers.Contract(
-      MarketplaceAddress.address,
-      MarketplaceAbi.abi,
-      signer
-    );
+    const marketplace = new ethers.Contract(MarketplaceAddress.address, MarketplaceAbi.abi, signer);
     setMarketplace(marketplace);
     const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer);
     setNFT(nft);
@@ -47,7 +43,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div>
+      <div className="App">
         <Navigation web3Handler={web3Handler} account={account} />
         { loading ? (
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh'}}>
@@ -57,7 +53,7 @@ function App() {
         ) : (
           <Routes>
             <Route path="/" element={
-              <Home/>
+              <Home marketplace={marketplace} nft={nft}/>
             } />
             <Route path="/create" />
             <Route path="/my-listed-items" />
